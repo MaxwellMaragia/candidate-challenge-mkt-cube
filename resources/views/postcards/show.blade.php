@@ -70,4 +70,19 @@
 		    </div>
 		</main>
 	</div>
+    @section('structured_markup')
+        <script type="application/ld+json">
+          {
+            "@context":"https://schema.org/",
+            "@type":"Product",
+            "name":"Postcard",
+            "description":"{{ $postcard->title }}",
+            "offers":{
+              "@type":"Offer",
+              "url":"{{ request()->fullUrl() }}"
+              "price":{{ $postcard->price }},
+            }
+          }
+    </script>
+    @endsection
 </x-guest-layout>

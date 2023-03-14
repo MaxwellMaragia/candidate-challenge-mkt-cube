@@ -24,5 +24,7 @@
         <div class="font-sans text-gray-900 antialiased">
             {{ $slot }}
         </div>
+        @section('structured_markup')
+        @show
     </body>
 </html>
