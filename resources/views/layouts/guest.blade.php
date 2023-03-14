@@ -17,7 +17,11 @@
         <link rel="manifest" href="/site.webmanifest">
         @section('prev_and_next_links')
         @show
-        <link rel="canonical" href="{{ request()->fullUrl() }}">
+        @if(request()->has('page'))
+            <link rel="canonical" href="{{ request()->url() }}?{{ http_build_query(['page' => request()->query('page')], '', '&amp;') }}">
+        @else
+            <link rel="canonical" href="{{ request()->url() }}">
+        @endif
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>

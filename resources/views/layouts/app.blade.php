@@ -15,7 +15,11 @@
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
         <link rel="manifest" href="/site.webmanifest">
-        <link rel="canonical" href="{{ request()->fullUrl() }}">
+        @if(request()->has('page'))
+            <link rel="canonical" href="{{ request()->url() }}?{{ http_build_query(['page' => request()->query('page')], '', '&amp;') }}">
+        @else
+            <link rel="canonical" href="{{ request()->url() }}">
+        @endif
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
 
