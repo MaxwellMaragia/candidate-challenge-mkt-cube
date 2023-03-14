@@ -39,7 +39,8 @@ class PostcardController extends Controller
      */
     public function show(Postcard $postcard)
     {
-        return view('postcards.show', compact('postcard'));
+        $postcards = Postcard::all();
+        return view('postcards.show', compact('postcard','postcards'));
     }
 
     /**
