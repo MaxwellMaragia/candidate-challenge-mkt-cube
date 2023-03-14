@@ -17,7 +17,7 @@
         <link rel="manifest" href="/site.webmanifest">
         @section('prev_and_next_links')
         @show
-        <link rel="canonical" href="{{ request()->url() }}">
+        <link rel="canonical" href="{{ request()->fullUrl() }}">
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
