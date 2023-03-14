@@ -23,4 +23,15 @@ class PostcardStatusTest extends TestCase
         $response->assertStatus(200);
         $response->assertSee($postcard->title);
     }
+
+    public function test_if_offline_postcard_returns_410_status_code(): void
+    {
+        $postcard = Postcard::where('is_draft', 1)
+            ->orWhere(function ($query) {
+                $query->where('offline_at', '<', now());
+            })->first();
+        $response = $this->get(route('postcards.show',$postcard->id));
+        $response->assertStatus(410);
+
+    }
 }
