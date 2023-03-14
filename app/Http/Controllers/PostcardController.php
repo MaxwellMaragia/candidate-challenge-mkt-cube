@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StorePostcardRequest;
 use App\Http\Requests\UpdatePostcardRequest;
 use App\Models\Postcard;
+use Illuminate\Http\Exceptions\HttpResponseException;
+use Illuminate\Http\Response;
 
 class PostcardController extends Controller
 {
@@ -45,7 +47,16 @@ class PostcardController extends Controller
     public function show(Postcard $postcard)
     {
         $postcards = Postcard::all();
-        return view('postcards.show', compact('postcard','postcards'));
+        $is_draft = $postcard->is_draft;
+        $offline_at = $postcard->offline_at;
+
+        if($is_draft==0 & ($offline_at === null || strtotime($offline_at)>time())){
+            return view('postcards.show', compact('postcard','postcards'));
+        }else{
+            $response = new Response(view('errors.410'), 410);
+            throw new HttpResponseException($response);
+        }
+
     }
 
     /**
