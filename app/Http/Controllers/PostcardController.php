@@ -14,7 +14,12 @@ class PostcardController extends Controller
     public function index()
     {
         return view('postcards.index', [
-            'postcards' => Postcard::where('is_draft',0)->paginate(20)
+            'postcards' => Postcard::where('is_draft', 0)
+                ->where(function ($query) {
+                    $query->where('offline_at', '>', now())
+                        ->orWhereNull('offline_at');
+                })
+                ->paginate(20)
         ]);
     }
 
