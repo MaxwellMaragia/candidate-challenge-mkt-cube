@@ -37,7 +37,10 @@
 
     <main class="pt-8 pb-16">
       <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
-
+          <form class="group relative" action="{{ route('search') }}" method="GET">
+              <input class="focus:ring-2 focus:ring-blue-500 focus:outline-none appearance-none w-full text-sm leading-6 text-slate-900 placeholder-slate-400 rounded-md py-2 pl-10 ring-1 ring-slate-200 shadow-sm" type="text" aria-label="Filter postcards" placeholder="Search postcards..." name="search" required>
+              <button type="submit">Search</button>
+          </form>
         <ul role="list" class="mt-5 divide-y divide-gray-200 border-t border-gray-200 sm:mt-0 sm:border-t-0">
           @forelse ($postcards as $postcard)
             <li>
@@ -45,9 +48,9 @@
                 <div class="flex items-center py-5 px-4 sm:py-6 sm:px-0">
                   <div class="flex min-w-0 flex-1 items-center">
 
-                    <div class="min-w-0 flex-1 px-4 md:grid md:grid-cols-3 md:gap-4">
+                    <div class="min-w-0 flex-1 px-4 md:grid md:grid-cols-3 md:gap-2">
                       <div>
-                          <img src="https://picsum.photos/200/100?random={{ $postcard->id }}" alt="{{ $postcard->title }}">
+                          <img src="https://picsum.photos/220/150?random={{ $postcard->id }}" alt="{{ $postcard->title }}">
                       </div>
                       <div>
                         <p class="truncate text-sm font-medium">{{ $postcard->title }}</p>
