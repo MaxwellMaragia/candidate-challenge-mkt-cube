@@ -57,8 +57,11 @@
 
     	<main class="pt-8 pb-16">
 	      	<div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
-			    <div class="mx-auto max-w-3xl">
-			      <div class="flex items-center">
+			    <div class="mx-auto max-w-4xl">
+			      <div class="flex items-center md:gap-4">
+                      <div>
+                          <img src="https://picsum.photos/500/300?random={{ $postcard->id }}" alt="{{ $postcard->title }}">
+                      </div>
 			        <div>
 			          <h1 class="text-2xl font-bold text-gray-900">{{ $postcard->title }}</h1>
 			          <p class="text-sm font-medium text-gray-500">Available on <time datetime="{{ $postcard->online_at }}">{{ $postcard->online_at }}</time> to <time datetime="{{ $postcard->offline_at }}">{{ $postcard->offline_at }}</time></p>

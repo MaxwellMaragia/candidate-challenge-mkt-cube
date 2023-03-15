@@ -1,5 +1,5 @@
 <x-guest-layout>
- 
+
   <div class="min-h-full">
     <!-- Navbar -->
     <nav class="bg-gray-50">
@@ -44,8 +44,11 @@
               <a href="{{ route('postcards.show', $postcard) }}" class="group block">
                 <div class="flex items-center py-5 px-4 sm:py-6 sm:px-0">
                   <div class="flex min-w-0 flex-1 items-center">
-                    
-                    <div class="min-w-0 flex-1 px-4 md:grid md:grid-cols-2 md:gap-4">
+
+                    <div class="min-w-0 flex-1 px-4 md:grid md:grid-cols-3 md:gap-4">
+                      <div>
+                          <img src="https://picsum.photos/200/100?random={{ $postcard->id }}" alt="{{ $postcard->title }}">
+                      </div>
                       <div>
                         <p class="truncate text-sm font-medium">{{ $postcard->title }}</p>
                         <p class="mt-2 flex items-center text-sm text-gray-500">
