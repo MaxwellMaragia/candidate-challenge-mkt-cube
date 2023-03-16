@@ -41,7 +41,7 @@
                     <input class="focus:ring-2 focus:ring-blue-500 focus:outline-none appearance-none w-full text-sm leading-6 text-slate-900 placeholder-slate-400 rounded-md py-2 pl-10 ring-1 ring-slate-200 shadow-sm" type="text" aria-label="Filter postcards" placeholder="Search postcards..." name="keywords" required>
                     <button type="button" class="bg-indigo-600 text-white text-sm leading-6 font-medium py-2 px-3 rounded-md">Search</button>
                 </form>
-                <p class="py-5"><b>{{ $postcards->count() }}</b> postcard/s found with for keyword/s : <b>"{{ $keywords }}"</b></p>
+                <p class="py-5"><b>{{ $postcards->count() }}</b> postcard/s found for keyword/s : <b>"{{ $keywords }}"</b></p>
                 <ul role="list" class="mt-5 divide-y divide-gray-200 border-t border-gray-200 sm:mt-0 sm:border-t-0">
                     @forelse ($postcards as $postcard)
                         <li>

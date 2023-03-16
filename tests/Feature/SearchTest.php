@@ -38,4 +38,19 @@ class SearchTest extends TestCase
 
         $response->assertStatus(200)->assertSee($postcard_title);
     }
+
+    public function test_search_with_non_existent_title(): void
+    {
+        $postcard = Postcard::where('is_draft', 0)
+            ->where(function ($query) {
+                $query->where('offline_at', '>', now())
+                    ->orWhereNull('offline_at');
+            })->first();
+        $postcard_title = $postcard->title;
+        $non_existent_title = $postcard_title."abracadabra";
+        $response = $this->get('/search?keywords=' . $non_existent_title);
+
+        $response->assertStatus(200)->assertDontSee($postcard->price);
+
+    }
 }
