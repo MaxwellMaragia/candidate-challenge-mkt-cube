@@ -24,7 +24,7 @@
                         <ol role="list" class="flex items-center space-x-4">
                             <li>
                                 <div>
-                                    <a href="#" class="text-sm font-medium text-gray-500 hover:text-gray-700">Home</a>
+                                    <a href="{{ url('/') }}" class="text-sm font-medium text-gray-500 hover:text-gray-700">Home</a>
                                 </div>
                             </li>
                         </ol>
@@ -37,10 +37,11 @@
 
         <main class="pt-8 pb-16">
             <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
-                <form class="group relative" action="{{ route('search') }}" method="GET">
-                    <input class="focus:ring-2 focus:ring-blue-500 focus:outline-none appearance-none w-full text-sm leading-6 text-slate-900 placeholder-slate-400 rounded-md py-2 pl-10 ring-1 ring-slate-200 shadow-sm" type="text" aria-label="Filter postcards" placeholder="Search postcards..." name="search" required>
-                    <button type="submit">Search</button>
+                <form class="flex group relative grid-cols-2 md:gap-4" action="{{ route('search') }}" method="GET">
+                    <input class="focus:ring-2 focus:ring-blue-500 focus:outline-none appearance-none w-full text-sm leading-6 text-slate-900 placeholder-slate-400 rounded-md py-2 pl-10 ring-1 ring-slate-200 shadow-sm" type="text" aria-label="Filter postcards" placeholder="Search postcards..." name="keywords" required>
+                    <button type="button" class="bg-indigo-600 text-white text-sm leading-6 font-medium py-2 px-3 rounded-md">Search</button>
                 </form>
+                <p class="py-5"><b>{{ $postcards->count() }}</b> postcard/s found with for keyword/s : <b>"{{ $keywords }}"</b></p>
                 <ul role="list" class="mt-5 divide-y divide-gray-200 border-t border-gray-200 sm:mt-0 sm:border-t-0">
                     @forelse ($postcards as $postcard)
                         <li>
@@ -76,7 +77,6 @@
                             </a>
                         </li>
                     @empty
-                        <p>No postcards found with keyword</p>
                     @endforelse
                 </ul>
 

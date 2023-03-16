@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StorePostcardRequest;
 use App\Http\Requests\UpdatePostcardRequest;
 use App\Models\Postcard;
-use http\Env\Request;
+use Illuminate\Http\Request;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Http\Response;
 
@@ -27,14 +27,16 @@ class PostcardController extends Controller
     }
 
     public function search(Request $request){
-            $keyword = $request->input('search');
+            $keywords = $request->input('keywords');
             $postcards = Postcard::where('is_draft', 0)
             ->where(function ($query) {
                 $query->where('offline_at', '>', now())
                     ->orWhereNull('offline_at');
             })
-            ->where('title', 'LIKE', "%{$keyword}%")
+            ->where('title', 'LIKE', "%{$keywords}%")
             ->paginate(20);
+
+            return view('postcards.search',compact('postcards','keywords'));
     }
 
     /**
