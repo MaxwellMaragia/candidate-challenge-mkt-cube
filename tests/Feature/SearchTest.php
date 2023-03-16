@@ -24,4 +24,18 @@ class SearchTest extends TestCase
 
         $response->assertStatus(200)->assertSee($postcard_title);
     }
+
+    public function test_search_with_partial_title(): void
+    {
+        $postcard = Postcard::where('is_draft', 0)
+            ->where(function ($query) {
+                $query->where('offline_at', '>', now())
+                    ->orWhereNull('offline_at');
+            })->first();
+        $postcard_title = $postcard->title;
+        $partial_text = substr($postcard_title, 0, 6);
+        $response = $this->get('/search?keywords=' . $partial_text);
+
+        $response->assertStatus(200)->assertSee($postcard_title);
+    }
 }
