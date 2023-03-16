@@ -28,3 +28,10 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+
+//robots txt controller
+Route::controller(\App\Http\Controllers\RobotsTxtController::class)->group(function (){
+    Route::get('robots.txt', 'index');
+});
+
+
