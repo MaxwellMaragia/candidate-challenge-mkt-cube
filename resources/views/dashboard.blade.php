@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
+            {{ __('Active postcards') }}
         </h2>
     </x-slot>
 
@@ -12,6 +12,8 @@
                     <table id="example" class="table table-striped" style="width:100%">
                         @include('includes.messages')
                         <a href="{{ route('postcards-management.create') }}" class="btn btn-info mb-4">Add Postcard</a>
+                        <a href="{{ url('/postcards-management/archive') }}" class="btn btn-warning mb-4 ml-3">Archive</a>
+
                         <thead>
                         <tr>
                             <th>Id</th>
@@ -46,14 +48,14 @@
                                                 {{@method_field('DELETE')}}
                                             </form>
                                             <a data-toggle="tooltip" class="btn btn-link" onclick="
-                                                if(confirm('Are you sure you want to delete this postcard?'))
+                                                if(confirm('Are you sure you want to archive this postcard?'))
                                                 {event.preventDefault();
                                                 document.getElementById('delete-form-{{ $postcard->id }}').submit();
                                                 }
                                                 else{
                                                 event.preventDefault();
                                                 }
-                                                ">Delete</a>
+                                                ">Archive</a>
                                     </td>
                                 </tr>
                             @endforeach

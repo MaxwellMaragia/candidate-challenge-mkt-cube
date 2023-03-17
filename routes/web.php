@@ -25,6 +25,8 @@ Route::middleware([
     'verified'
 ])->group(function () {
     Route::get('/dashboard', [\App\Http\Controllers\PostcardManagement::class,'index'])->name('dashboard');
+    Route::get('/postcards-management/archive', [\App\Http\Controllers\PostcardManagement::class,'archive']);
+    Route::get('/postcards-management/{postcard}/restore', [\App\Http\Controllers\PostcardManagement::class,'restore'])->withTrashed();
 });
 
 //robots txt controller
@@ -33,6 +35,6 @@ Route::controller(\App\Http\Controllers\RobotsTxtController::class)->group(funct
 });
 
 Route::resource('postcards-management',\App\Http\Controllers\PostcardManagement::class);
-Route::get('/postcards/archive', [\App\Http\Controllers\PostcardManagement::class,'archive']);
+
 
 
