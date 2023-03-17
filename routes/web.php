@@ -26,7 +26,7 @@ Route::middleware([
 ])->group(function () {
     Route::get('/dashboard', [\App\Http\Controllers\PostcardManagement::class,'index'])->name('dashboard');
     Route::get('/postcards-management/archive', [\App\Http\Controllers\PostcardManagement::class,'archive']);
-    Route::get('/postcards-management/{postcard}/restore', [\App\Http\Controllers\PostcardManagement::class,'restore'])->withTrashed();
+    Route::post('/postcards-management/{postcard}/restore', [\App\Http\Controllers\PostcardManagement::class,'restore'])->withTrashed();
 });
 
 //robots txt controller

@@ -41,6 +41,10 @@
                                 <td>{{ date($postcard->online_at) }}</td>
                                 <td>{{ date($postcard->offline_at) }}</td>
                                 <td>
+                                    <form action="/postcards-management/{{ $postcard->id }}/restore" method="post">
+                                        @csrf
+                                        <button class="btn btn-link">Restore</button>
+                                    </form>
                                     <form id="delete-form-{{ $postcard->id }}" action="{{ route('postcards-management.destroy',$postcard->id) }}" style="display: none;" method="post">
                                         {{@csrf_field()}}
                                         {{@method_field('DELETE')}}
