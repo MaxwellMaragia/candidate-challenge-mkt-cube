@@ -33,5 +33,6 @@ Route::controller(\App\Http\Controllers\RobotsTxtController::class)->group(funct
 });
 
 Route::resource('postcards-management',\App\Http\Controllers\PostcardManagement::class);
+Route::get('/postcards/archive', [\App\Http\Controllers\PostcardManagement::class,'archive']);
 
 
