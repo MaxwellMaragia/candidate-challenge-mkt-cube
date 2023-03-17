@@ -64,7 +64,7 @@ class PostcardController extends Controller
         $is_draft = $postcard->is_draft;
         $offline_at = $postcard->offline_at;
 
-        if($is_draft==0 & ($offline_at === null || strtotime($offline_at)>time())){
+        if($is_draft===0 & ($offline_at === null || strtotime($offline_at)>time())){
             return view('postcards.show', compact('postcard','postcards'));
         }else{
             $response = new Response(view('errors.410'), 410);

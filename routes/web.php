@@ -24,14 +24,14 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified'
 ])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    Route::get('/dashboard', [\App\Http\Controllers\PostcardManagement::class,'index'])->name('dashboard');
 });
 
 //robots txt controller
 Route::controller(\App\Http\Controllers\RobotsTxtController::class)->group(function (){
     Route::get('robots.txt', 'index');
 });
+
+Route::resource('postcards-management',\App\Http\Controllers\PostcardManagement::class);
 
 

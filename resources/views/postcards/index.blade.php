@@ -44,7 +44,7 @@
         <ul role="list" class="mt-5 divide-y divide-gray-200 border-t border-gray-200 sm:mt-0 sm:border-t-0">
           @forelse ($postcards as $postcard)
             <li>
-              <a href="{{ route('postcards.show', $postcard) }}" class="group block">
+              <a href="{{ route('postcards.show', $postcard->id) }}" class="group block">
                 <div class="flex items-center py-5 px-4 sm:py-6 sm:px-0">
                   <div class="flex min-w-0 flex-1 items-center">
 
