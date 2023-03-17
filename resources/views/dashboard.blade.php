@@ -10,6 +10,7 @@
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                 <div class="bg-gray-200 bg-opacity-25 p-6">
                     <table id="example" class="table table-striped" style="width:100%">
+                        @include('includes.messages')
                         <a href="{{ route('postcards-management.create') }}" class="btn btn-info mb-4">Add Postcard</a>
                         <thead>
                         <tr>
@@ -46,11 +47,11 @@
                                             </form>
                                             <a data-toggle="tooltip" class="btn btn-link" onclick="
                                                 if(confirm('Are you sure you want to delete this postcard?'))
-                                                {HTMLElement.preventDefault();
+                                                {event.preventDefault();
                                                 document.getElementById('delete-form-{{ $postcard->id }}').submit();
                                                 }
                                                 else{
-                                                HTMLElement.preventDefault();
+                                                event.preventDefault();
                                                 }
                                                 ">Delete</a>
                                     </td>

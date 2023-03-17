@@ -9,8 +9,9 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-6">
                 @include('includes.messages')
-                <form method="post" action="{{ route('postcards-management.store') }}">
+                <form method="post" action="{{ route('postcards-management.update',$postcard->id) }}">
                     {{csrf_field()}}
+                    {{ method_field('PATCH') }}
                     <div class="mb-3">
                         <label class="form-label">Postcard title</label>
                         <input type="text" class="form-control" name="title" required="required" value="{{ $postcard->title }}">
