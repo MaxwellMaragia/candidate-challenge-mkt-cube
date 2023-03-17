@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::controller(App\Http\Controllers\PostcardController::class)->group(function () {
     Route::get('/', 'index')->name('postcards.index');
-    Route::get('/postcards/{postcard}', 'show')->name('postcards.show');
+    Route::get('/postcards/{postcard}', 'show')->name('postcards.show')->withTrashed();
     Route::get('/search','search')->name('search');
 });
 
