@@ -45,20 +45,11 @@
                                         @csrf
                                         <button class="btn btn-link">Restore</button>
                                     </form>
-                                    <form id="delete-form-{{ $postcard->id }}" action="{{ route('postcards-management.destroy',$postcard->id) }}" style="display: none;" method="post">
-                                        {{@csrf_field()}}
-                                        {{@method_field('DELETE')}}
+                                    <form action="/postcards-management/{{ $postcard->id }}/delete" method="post">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="btn btn-link">Delete</button>
                                     </form>
-                                    <a data-toggle="tooltip" class="btn btn-link" onclick="
-                                                if(confirm('Are you sure you want to permanently delete this postcard?'))
-                                                {event.preventDefault();
-                                                document.getElementById('delete-form-{{ $postcard->id }}').submit();
-                                                }
-                                                else{
-                                                event.preventDefault();
-                                                }
-                                                ">Delete</a>
-                                </td>
                             </tr>
                         @endforeach
                         </tbody>

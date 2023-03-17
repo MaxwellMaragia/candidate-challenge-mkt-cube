@@ -43,19 +43,11 @@
                                     <td>{{ date($postcard->offline_at) }}</td>
                                     <td>
                                             <a data-toggle="tooltip" title="Edit" href="{{ route('postcards-management.edit',$postcard->id) }}" class="btn btn-link">Edit</a>
-                                            <form id="delete-form-{{ $postcard->id }}" action="{{ route('postcards-management.destroy',$postcard->id) }}" style="display: none;" method="post">
-                                                {{@csrf_field()}}
-                                                {{@method_field('DELETE')}}
+                                            <form action="/postcards-management/{{ $postcard->id }}/delete" method="post">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button class="btn btn-link">Archive</button>
                                             </form>
-                                            <a data-toggle="tooltip" class="btn btn-link" onclick="
-                                                if(confirm('Are you sure you want to archive this postcard?'))
-                                                {event.preventDefault();
-                                                document.getElementById('delete-form-{{ $postcard->id }}').submit();
-                                                }
-                                                else{
-                                                event.preventDefault();
-                                                }
-                                                ">Archive</a>
                                     </td>
                                 </tr>
                             @endforeach

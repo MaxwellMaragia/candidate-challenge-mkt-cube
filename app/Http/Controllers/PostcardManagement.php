@@ -120,9 +120,14 @@ class PostcardManagement extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Postcard $postcard, Request $request)
     {
-        $postcard = Postcard::find($id);
+
+        if($postcard->trashed()){
+            $postcard->forceDelete();
+            return redirect()->back()->with('success','Postcard deleted successfully');
+        }
+
         $postcard->delete();
         return redirect()->back()->with('success','Postcard moved to archive');
 

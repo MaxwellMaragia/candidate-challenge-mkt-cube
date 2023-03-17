@@ -27,6 +27,7 @@ Route::middleware([
     Route::get('/dashboard', [\App\Http\Controllers\PostcardManagement::class,'index'])->name('dashboard');
     Route::get('/postcards-management/archive', [\App\Http\Controllers\PostcardManagement::class,'archive']);
     Route::post('/postcards-management/{postcard}/restore', [\App\Http\Controllers\PostcardManagement::class,'restore'])->withTrashed();
+    Route::delete('/postcards-management/{postcard}/delete', [\App\Http\Controllers\PostcardManagement::class,'destroy'])->withTrashed();
 });
 
 //robots txt controller
