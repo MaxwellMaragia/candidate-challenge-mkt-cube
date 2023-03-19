@@ -1,15 +1,10 @@
 @section('prev_and_next_links')
-    @foreach($postcards as $element)
-        @if($element->id==$postcard->id)
-            @if(!$loop->last)
-                <link rel="next" href="{{ route('postcards.show',$postcard->id+1) }}">
-            @endif
-            @if(!$loop->first)
-                <link rel="prev" href="{{ route('postcards.show',$postcard->id-1) }}">
-            @endif
-        @else
-        @endif
-    @endforeach
+    @if($previousPostcard)
+        <link rel="next" href="{{ route('postcards.show',$previousPostcard) }}">
+    @endif
+    @if($nextPostcard)
+        <link rel="prev" href="{{ route('postcards.show',$nextPostcard) }}">
+    @endif
 @endsection
 <x-guest-layout>
 	<div class="min-h-full">

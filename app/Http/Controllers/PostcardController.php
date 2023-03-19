@@ -60,7 +60,6 @@ class PostcardController extends Controller
      */
     public function show(Postcard $postcard)
     {
-        $postcards = Postcard::all();
         $is_draft = $postcard->is_draft;
         $offline_at = $postcard->offline_at;
 
@@ -69,13 +68,23 @@ class PostcardController extends Controller
             throw new HttpResponseException($response);
         }else{
             if($is_draft===0 & ($offline_at === null || strtotime($offline_at)>time())){
-                return view('postcards.show', compact('postcard','postcards'));
+                $previousPostcard = Postcard::where('id', '<', $postcard->id)->where('is_draft', 0)
+                    ->where(function ($query) {
+                        $query->where('offline_at', '>', now())
+                            ->orWhereNull('offline_at');
+                    })->orderBy('id', 'desc')->first();
+
+                $nextPostcard = Postcard::where('id', '>', $postcard->id)->where('is_draft', 0)
+                    ->where(function ($query) {
+                        $query->where('offline_at', '>', now())
+                            ->orWhereNull('offline_at');
+                    })->orderBy('id', 'asc')->first();
+                return view('postcards.show', compact('postcard','previousPostcard','nextPostcard'));
             }else{
                 $response = new Response(view('errors.410'), 410);
                 throw new HttpResponseException($response);
             }
         }
-
     }
 
     /**
