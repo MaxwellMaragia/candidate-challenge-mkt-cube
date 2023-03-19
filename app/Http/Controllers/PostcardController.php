@@ -39,8 +39,19 @@ class PostcardController extends Controller
      */
     public function show(Postcard $postcard)
     {
-        $postcards = Postcard::all();
-        return view('postcards.show', compact('postcard','postcards'));
+        $previousPostcard = Postcard::where('id', '<', $postcard->id)->where('is_draft', 0)
+            ->where(function ($query) {
+                $query->where('offline_at', '>', now())
+                    ->orWhereNull('offline_at');
+            })-orderBy('id', 'desc')->first();
+
+        $nextPostcard = Postcard::where('id', '>', $postcard->id)->where('is_draft', 0)
+                ->where(function ($query) {
+                    $query->where('offline_at', '>', now())
+                        ->orWhereNull('offline_at');
+                })-orderBy('id', 'acs')->first();
+
+        return view('postcards.show', compact('postcard','previousPostcard','nextPostcard'));
     }
 
     /**
