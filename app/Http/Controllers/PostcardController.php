@@ -43,13 +43,13 @@ class PostcardController extends Controller
             ->where(function ($query) {
                 $query->where('offline_at', '>', now())
                     ->orWhereNull('offline_at');
-            })-orderBy('id', 'desc')->first();
+            })->orderBy('id', 'desc')->first();
 
         $nextPostcard = Postcard::where('id', '>', $postcard->id)->where('is_draft', 0)
                 ->where(function ($query) {
                     $query->where('offline_at', '>', now())
                         ->orWhereNull('offline_at');
-                })-orderBy('id', 'acs')->first();
+                })->orderBy('id', 'asc')->first();
 
         return view('postcards.show', compact('postcard','previousPostcard','nextPostcard'));
     }
