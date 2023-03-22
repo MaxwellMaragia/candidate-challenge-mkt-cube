@@ -1,9 +1,9 @@
 @section('prev_and_next_links')
     @if($previousPostcard)
-        <link rel="next" href="{{ route('postcards.show',$previousPostcard) }}">
+        <link rel="prev" href="{{ route('postcards.show',$previousPostcard) }}">
     @endif
     @if($nextPostcard)
-        <link rel="prev" href="{{ route('postcards.show',$nextPostcard) }}">
+        <link rel="next" href="{{ route('postcards.show',$nextPostcard) }}">
     @endif
 @endsection
 <x-guest-layout>
