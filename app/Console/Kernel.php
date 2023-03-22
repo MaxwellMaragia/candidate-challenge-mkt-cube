@@ -12,7 +12,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule): void
     {
-         $schedule->command('sitemap:generate')->cron('0 7-20 * * *');
+         $schedule->command('sitemap:generate')->hourly()->between('7:00','20:00');
     }
 
     /**

@@ -1,18 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
     <url>
-        <loc>http://localhost/postcards/1</loc>
-        <lastmod>2023-05-05T18:28:41+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.8</priority>
-        </url>
-    <url>
-        <loc>http://localhost/postcards/2</loc>
-        <lastmod>2023-04-23T18:28:41+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.8</priority>
-        </url>
-    <url>
         <loc>http://localhost/postcards/7</loc>
         <lastmod>2023-05-05T18:28:41+00:00</lastmod>
         <changefreq>daily</changefreq>
@@ -27,12 +15,6 @@
     <url>
         <loc>http://localhost/postcards/9</loc>
         <lastmod>2023-04-25T18:28:41+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.8</priority>
-        </url>
-    <url>
-        <loc>http://localhost/postcards/10</loc>
-        <lastmod>2023-05-01T18:28:41+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>
         </url>
@@ -1617,6 +1599,12 @@
     <url>
         <loc>http://localhost/postcards/496</loc>
         <lastmod>2023-04-17T18:28:41+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+        </url>
+    <url>
+        <loc>http://localhost/postcards/504</loc>
+        <lastmod>2023-03-19T15:11:04+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>
         </url>
